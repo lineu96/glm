@@ -1,0 +1,746 @@
+---
+output:
+  html_document:                    # Classe de documento.
+    toc: true                       # Exibir sum?rio.
+    toc_depth: 2                    # Profundidade do sum?rio.
+    toc_float:                      # Sum?rio flutuante na borda.
+      collapsed: true
+      smooth_scroll: true
+    number_sections: true           # Se??es numeradas.
+    theme: simplex
+    #default,cerulean,journal,flatly,readable,spacelab,
+    #united,cosmo,lumen,paper,sandstone,simplex,yeti
+    
+    highlight: espresso
+    #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, and textmate
+    #css: styles.css                 # Caminho para arquivo CSS.
+    fig_width: 7                    # Lagura das figuras.
+    fig_height: 6                   # Altura das figuras.
+    fig_caption: true               # Exibica??o de legenda.
+    fig_align: 'center'
+#    code_folding: hide              # Esconder/exibir bloco de c?digo.
+#    keep_md: true                   # Manter o arquivo md.
+    #template: quarterly_report.html # Caminho para o template.  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+library(tidyverse)
+```
+
+<center>
+<table><tr>
+<td> <img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/> </td>
+</tr></table>
+</center>
+
+---
+
+$$\textbf{Lineu Alberto Cavazani de Freitas}$$
+$$\textbf{Prof. Cesar Augusto Taconeli}$$
+$$\textbf{Modelos Lineares Generalizados (CE225)}$$
+
+---
+
+<center>
+<font size="5"> 
+<p align=”center”> <b> Modelos de Regressão para Dados Binários  </b> </center>
+</font>
+</center>
+
+---
+
+<center>
+<font size="3"> 
+<p align=”center”> <b> Casos de Câncer de Mama de Wisconsin  </b> </center>
+</font>
+</center>
+
+---
+
+# Dados
+
+---
+
+Exemplo disponível em Bennett, K.,P., and Mangasarian, O.L., 1992
+
+---
+
+Os dados provêm de um estudo de câncer de mama em Wisconsin. São 681 casos de tumores potencialmente cancerosos, dos quais 238 são realmente  malignos. 
+
+As variáveis explicativas disponíveis dizem respeito a características observadas nos tumores sob estudo.
+
+Os valores das variáveis preditoras foram determinados por um médico observando as células e classificando-as em uma escala de 1 (normal) a 10 (mais anormal) em relação a cada característica avaliada.
+
+
+Variáveis: 
+  
+1.  **Class** - classificação do tumor: 0 maligno, 1 benigno (resposta)
+2.  **Adhes** - adesão marginal
+3.  **BNucl** - nucléolos nus
+4.  **Chrom** - cromatina branda
+5.  **Epith** - tamanho da célula epitelial
+6.  **Mitos** - mitose
+7.  **NNucl** - nucléolo normal
+8.  **Thick** - espessura do aglomerado
+9.  **UShap** - uniformidade da forma da célula
+10. **USize** - uniformidade do tamanho da célula
+
+O objetivo da análise foi modelar a probabilidade de do tumor sob investigação ser maligno.
+
+Os dados estão disponíveis no pacote de Julian Faraway (2016). O pacote fornece a documentação dos dados. Verifique!
+
+
+```{r}
+library(faraway)
+
+data(wbca)
+
+dados <- wbca
+```
+
+
+Verificando a quantidade de tumores benignos na base (`Class = 1`):
+
+```{r}
+sum(dados$Class==1)
+```
+
+Vamos redefinir os níveis da variável classe de forma a modelar a probabilidade de tumor maligno:
+
+```{r}
+dados$Class <- ifelse(dados$Class == 0, 1, 0)
+```
+
+Outras opções para a conversão são as funções `levels`e `relevel`.
+
+E agora sim, os 238 tumores malignos estão codificados como 1, enquanto os benignos estão codificados como 0.
+
+```{r}
+sum(dados$Class==1)
+
+```
+
+As primeiras 6 linhas da base de dados têm a seguinte forma:
+
+```{r}
+head(dados)
+```
+
+Com os ajustes realizados, pode-se fazer a análise descritiva da base de dados:
+
+---
+
+# Análise Descritiva
+
+Vamos realizar uma breve análise descritiva dos dados.
+
+---
+
+## Medidas Resumo
+
+Usando a função summary vamos verificar o mínimo, o máximo, a mediana e os quartis das variáveis explicativas em estudo:
+
+```{r}
+summary(dados[ , 2:10])
+```
+
+Nota-se pelas medidas resumo a predominância de tumores com células classificadas como normais já que os valores das médias são, em sua maioria, baixos, distantes do valor máximo (10) considerado anormal. 
+
+---
+
+## Boxplots
+
+O boxplot é uma alternativa de análise descritiva para avaliação da distribuição dos dados.
+
+```{r}
+
+par(mfrow=c(3,3))
+
+for (i in 2:ncol(dados)) {
+  boxplot(dados[,i], 
+          xlab = '', 
+          ylab = '', 
+          main = names(dados[i]), 
+          las=1,
+          col = '#A2F4D6')
+}
+
+mtext(side=2,cex=1.3,line=-1.5,text="Nota na Avaliação Médica",outer=TRUE)
+```
+
+Os boxplots também fornecem indícios de valores predominantemente baixos, e portanto, assimetria nas distribuições variáveis explicativas.
+
+---
+
+## Histogramas
+
+O histograma é outra alternativa para observar a forma da distribuição dos dados.
+
+```{r}
+par(mfrow=c(3,3))
+
+for (i in 2:ncol(dados)) {
+  hist(dados[,i], 
+          xlab = '', 
+          ylab = '', 
+          main = names(dados[i]), 
+          las=1,
+          col = '#FACACC')
+}
+
+```
+
+Os histogramas apontam na mesma direção das análises anteriores. Aqui fica claro, para todas as variáveis, a predominância de valores entre 0 e 2. 
+
+---
+
+## Distribuição dos valores das covariáveis para tumores benignos e malignos
+
+```{r, message=FALSE}
+library(ggplot2)
+library(gridExtra)
+
+bp <- function(covariavel, xlab){
+  ggplot(dados, 
+         aes(x=factor(Class), 
+             y=covariavel, 
+             color=factor(Class))) + 
+    geom_boxplot()+ 
+    guides(color=FALSE)+
+    xlab(xlab)+ 
+    ylab('') +
+    theme_light()
+  }
+
+g1 <- bp(dados[,2],names(dados[2]))
+g2 <- bp(dados[,3],names(dados[3]))
+g3 <- bp(dados[,4],names(dados[4]))
+g4 <- bp(dados[,5],names(dados[5]))
+g5 <- bp(dados[,6],names(dados[6]))
+g6 <- bp(dados[,7],names(dados[7]))
+g7 <- bp(dados[,8],names(dados[8]))
+g8 <- bp(dados[,9],names(dados[9]))
+g9 <- bp(dados[,10],names(dados[10]))
+
+
+grid.arrange(g1, g2, g3, g4, g5, g6, g7,g8 ,g9, ncol=3, nrow=3)
+
+```
+
+Os gráficos mostram que observações correspondentes a tumores malignos (codificados como 1) tendem a apresentar escores mais elevados para as covariáveis consideradas.
+
+---
+
+## Análise das correlações entre as covariáveis
+
+```{r, message=FALSE}
+cor <- cor(dados[ , 2:10])
+
+library(corrplot)
+corrplot.mixed(cor, upper = "ellipse")
+```
+
+Todas as covariáveis apresentam correlações positivas. Em diversos casos foram verificados valores superiores a 0.7, configurando correlações bastante expressivas.
+
+---
+
+## Uma forma eficiente de explorar relações
+
+Fazendo uso da função `pairs.panels` do pacote `psych` é possível verificar numa matriz: os gráficos de dispersão das variáveis duas a duas (na triangular inferior), as estimativas das correlações (na triangular superior) e os histogramas com as densidades na diagonal principal. Num único gráfico podemos verificar relações entre as variáveis e suas distribuições marginais.
+
+```{r, warning=FALSE, message=FALSE}
+
+library(psych)
+
+pairs.panels(dados[ , 2:10], 
+             method = "pearson",
+             hist.col = 2,
+             density = TRUE, 
+             ellipses = FALSE,
+             pch = 20,
+             lwd = 0.01
+)
+
+```
+
+Por mais que seja um recurso interessante deve-se atentar para o fato de que se há muitas variáveis no estudo a visualização fica comprometida.
+
+---
+
+# Ajuste dos Modelos de Regressão
+
+Os modelos de regressão para dados binários com distribuição de probabilidades binomial para a resposta são definidos da seguinte forma:
+
+$$
+\newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}
+$$
+$$y_{i}|\undertilde{x_{i}} \sim Binomial (m_{i}, \pi_{i})$$
+
+$$ \newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}$$
+
+$$ g(\pi_{i}) =  {\beta_{0}} + {\beta_{1}}\, x_{i1} + {\beta_{2}}\, x_{i2} + ... + {\beta_{p}}\, x_{ip},$$
+
+onde $y_i$ é a variável resposta, $x_{i1}, x_{i2}, ..., x_{ip}$ as variáveis explicativas avaliadas no $i-$ésimo indivíduo e, neste caso, $m_{i}$ = 1 já que a variável resposta assume valores 0 ou 1, se tratando portanto de variáveis com distribuição de Bernoulli. 
+Por fim, $g(\pi_{i})$ é a função de ligação, se trata de uma função real, monótona e diferenciável, que associa e lineariza a relação entre o componente aleatório e o sistemático do modelo. 
+
+Neste problema estamos interessados em modelar a probabilidade de tumor maligno em função das covariáveis.
+
+Nas seções seguintes são mostrados o ajuste dos Modelos Lineares Generalizados para dados binários considerando as covariáveis de forma aditiva com diferentes funções de ligação.
+
+---
+
+## Ligação logito
+
+Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Logito. A expressão do modelo é dada por:
+
+
+
+$$ ln\left ( \frac{\pi _{i}}{1-\pi _{i}}\right )
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}$$
+
+
+No R, o modelo é declarado da seguinte forma:
+
+```{r, warning=FALSE}
+ajuste1 <- glm(Class ~ .,family=binomial(link='logit'),data = dados)
+```
+
+---
+
+## Ligação probito
+
+Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Probito. A expressão do modelo é dada por:
+
+
+$$ \phi ^{-1} (\pi _{i})
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i},$$
+
+em que $\phi ^{-1}$ é a inversa da acumulada da distribuição Normal.
+
+No R, o modelo é declarado da seguinte forma:
+
+```{r, warning=FALSE}
+ajuste2 <- glm(Class ~ .,family=binomial(link = 'probit'),data = dados)
+```
+
+---
+
+## Ligação complemento Log-Log
+
+Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Complemento Log Log. A expressão do modelo é dada por:
+
+
+$$ ln[-ln(1-\pi _{i})]
+= {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}$$
+
+
+No R, o modelo é declarado da seguinte forma:
+
+```{r, warning=FALSE}
+ajuste3 <- glm(Class ~ .,family=binomial(link='cloglog'),data = dados)
+```
+
+---
+
+## Ligação Cauchy
+
+Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Cauchy. A expressão do modelo é dada por:
+
+$$ tan[\pi_{i}(\mu_{i}-0,5)]
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}$$
+
+
+No R, o modelo é declarado da seguinte forma:
+
+```{r, warning=FALSE}
+ajuste4 <- glm(Class ~ .,family=binomial(link='cauchit'),data = dados)
+```
+
+---
+
+# Escolha do Modelo
+
+Para seleção de modelos diversas medidas podem ser utilizadas, em especial vamos utilizar a verossimilhança dos modelos. 
+
+O critério de informação AIC pode também ser utilizado, porém o AIC penaliza o número de parâmetros do modelo. Como os modelos tem o mesmo número de parâmetros, o critério aponta para a mesma direção da verossimilhança pois todos são penalizados da mesma forma; para fins de ilustração, as duas quantidades são exibidas:
+
+```{r}
+selec <- data.frame(ajuste=c('logito', 'probito', 'cloglog', 'cauchy'),
+                    aic=c(AIC(ajuste1), AIC(ajuste2), AIC(ajuste3), AIC(ajuste4)),
+                    logLik=c(logLik(ajuste1),logLik(ajuste2),logLik(ajuste3),logLik(ajuste4)))
+
+selec
+
+```
+
+O modelo que apresentou menor AIC e maior verossimilhança foi o modelo Binomial com função de ligação Probito.
+
+---
+
+# Análise do modelo ajustado selecionado
+
+Vamos seguir as análises fazendo uso do modelo Binomial com função de ligação Probito.
+
+---
+
+## Resumo do Modelo
+
+O modelo original foi ajustado usando todas as covariáveis disponíveis. Vamos verificar no resumo do modelo selecionado quais covariáveis apresentam efeito significativo na classificação do tumor.
+
+
+```{r}
+summary(ajuste2)
+```
+
+O resumo do modelo ajustado indica que as variáveis adesão marginal, nucléolos nus, cromatina branda, nucléolo normal e espessura do aglomerado estão associadas a uma maior probabilidade de tumor maligno, enquanto as demais variáveis não apresentam relação com a resposta. 
+
+---
+
+## Reajuste do Modelo
+
+Como as covariáveis são altamente correlacionadas, é válido inserir as covariáveis uma a uma no modelo para verificar sua significância na presença das outras, tal como o realizado pelo algoritmo stepwise.
+
+Sendo assim, o novo modelo fica da seguinte forma:
+
+```{r, results = "hide", warning=FALSE}
+ajuste2.1 <- step(ajuste2, direction = "both")
+```
+
+O resumo do novo modelo ajustado:
+
+```{r}
+summary(ajuste2.1)
+```
+
+O algoritmo indica que as variáveis tamanho da célula epitelial e uniformidade do tamanho da célula, de fato, não são necessárias para o ajuste. 
+
+Agora, vamos realizar o teste da razão de verossimilhança do modelo inicial e do reduzido:
+
+```{r}
+anova(ajuste2, ajuste2.1, test = 'Chisq')
+```
+
+O p-valor do teste foi relativamente alto, portanto pode-se concluir que o modelo restrito se ajusta aos dados amostrais tão bem quanto o modelo considerando todas as covariáveis. Assim, o modelo final fica expresso por:
+
+
+
+$$ \phi ^{-1} (\hat{\pi} _{i})
+ =  { -5.8024} + {0.1943}\, Adhes_{i} + {0.2145}\, BNucl_{i} + {0.3080}\, Chrom_{i} + \\ {0.2841}\, Mitos_{i} + {0.1527}\, NNucl_{i} + {0.3237}\, Thick_{i} + {0.1575}\, UShap_{i}$$
+
+
+---
+
+## Análise de Resíduos
+
+Tal como nos modelos de regressão linear com erros Normais, a análise de resíduos é uma  importante etapa do ajuste dos modelos para dados binários e dos Modelos Lineares Generalizados em geral. 
+ 
+
+```{r}
+par(mfrow=c(2,2))
+plot(ajuste2.1, 1:4)
+
+```
+
+Os gráficos de diagnóstico padrão para a função glm são baseados nos resíduos componentes da deviance e, muitas vezes, complicados de avaliar na prática; contudo existem outras opções a serem exploradas.
+
+---
+
+## Medidas de Influência
+
+Uma alternativa para verificação de medidas influentes está implementada no pacote car:
+
+```{r}
+library(car)
+infIndexPlot(ajuste2.1, vars=c("Cook"), main="Distância de Cook")
+infIndexPlot(ajuste2.1, vars=c("Studentized"), main="Resíduos Padronizados")
+```
+
+Não há indicativos fortes de outliers ou observações influentes. 
+
+---
+
+## Resíduos Quantílicos Aleatorizados
+
+Outra alternativa é avaliar a qualidade do ajuste com base nos resíduos quantílicos aleatorizados. A função `qresiduals` do pacote statmod extrai este tipo de resíduos do modelo
+
+```{r, message=FALSE}
+library(statmod)
+```
+
+```{r}
+par(mfrow=c(1,2))
+
+res <- qresiduals(ajuste2.1)
+
+plot(res)
+
+residuos <- qresiduals(ajuste2.1)
+qqnorm(residuos)
+qqline(residuos, col = 2)
+
+```
+
+No gráfico da esquerda nota-se que os resíduos estão dispersos em torno de 0 entre -3 e 3. Além disso, no gráfico a direita verifica-se que os resíduos apresentam boa aderência à distribuição Normal, indicativo de bom ajuste.
+
+---
+
+## Gráfico Normal de Probabilidades com Envelope Simulado
+
+O gráfico de resíduos simulados permite verificar a adequação do modelo ajustado mesmo que os resíduos não tenham uma aproximação adequada com a distribuição Normal. Neste tipo de gráfico espera-se, para um modelo bem ajustado, os pontos (resíduos) dispersos aleatoriamente entre os limites do envelope.
+
+Deve-se ficar atento à presença de pontos fora dos limites do envelope ou ainda a pontos dentro dos limites porém apresentando padrões sistemáticos.
+
+Vamos utilizar a função envelope implementada pelo professor [Cesar Augusto Taconeli
+](https://docs.ufpr.br/~taconeli/) :
+
+```{r, warning=FALSE}
+envelope=function(modelo){
+  dados=na.omit(modelo$data)
+  nsim=100
+  n=modelo$df.null+1
+  r1=sort(rstandard(modelo,type='deviance'))
+  m1=matrix(0,nrow=n,ncol=nsim)
+  a2=simulate(modelo,nsim=nsim)
+  
+  for (i in 1:nsim){
+    dados$y=a2[,i]
+    aj=update(modelo,y~.,data=dados)
+    m1[,i]=sort(rstandard(aj,type='deviance'))}
+  
+  li=apply(m1,1,quantile,0.025)
+  m=apply(m1,1,quantile,0.5)
+  ls=apply(m1,1,quantile,0.975)
+  
+  quantis=qnorm((1:n-0.5)/n)
+  
+  plot(rep(quantis,2),c(li,ls),type='n',xlab='Percentil da N(0,1)',ylab='Resíduos')
+  title('Gráfico Normal de Probabilidades')
+  lines(quantis,li,type='l')
+  lines(quantis,m,type='l',lty=2)
+  lines(quantis,ls,type='l')
+  points(quantis,r1,pch=16,cex=0.75)
+}
+```
+
+E agora, utilizando a função:
+
+```{r, warning=FALSE}
+envelope(ajuste2.1)
+```
+
+Os resíduos estão dispersos no interior dos envelopes simulados, sem aparente padrão sistemático dando indício de que o modelo está bem ajustado. Diversas outras opções de gráficos (meio) normais com envelopes simulados estão implementadas no pacote `hnp`
+
+---
+
+## Gráficos de Efeitos
+
+A função `effects`, do pacote de mesmo nome, devolve os efeitos marginais de cada variável de um modelo ajustado; os gráficos de efeitos nos fornecem uma forma visual de observar como cada variável explicativa afeta a resposta, com as demais variáveis fixadas na média.
+
+```{r, message=FALSE}
+library(effects)
+
+plot(allEffects(ajuste2.1), type = 'response', main = '')
+```
+
+---
+
+# Predição
+
+Para fins de predição, vamos considerar as seguintes características para duas observações distintas:
+
+**Tumor 1:**
+
+1. Adhes = 6    
+2. BNucl = 9
+3. Chrom = 3
+4. Mitos = 9
+5. NNucl = 8
+6. Thick = 2
+7. UShap = 6
+
+**Tumor 2**
+
+1. Adhes = 3    
+2. BNucl = 1
+3. Chrom = 7
+4. Mitos = 1
+5. NNucl = 3
+6. Thick = 4
+7. UShap = 5
+
+E responder à seguinte pergunta: *Qual é a probabilidade do tumor ser maligno nos dois casos apresentados?*
+
+
+```{r}
+perfis <- data.frame(Adhes = c(6,  3), 
+                     BNucl = c(9,  1),
+                     Chrom = c(3,  7),
+                     Mitos = c(9,  1),
+                     NNucl = c(8,  3),
+                     Thick = c(2,  4),
+                     UShap = c(6,  5)
+)
+ 
+```
+
+Utilizando a função predict para obter a probabilidade de tumor maligno nestes indivíduos:
+
+```{r}
+predict(ajuste2.1, interval = 'prediction', newdata = perfis, type = 'response')
+```
+
+Portanto, a probabilidade do tumor ser maligno, no primeiro caso, é 0,99; para o segundo caso, a probabilidade é de 0,49.
+
+---
+
+# Avaliação do poder preditivo do modelo
+
+Como temos uma base de tamanho razoável para fins preditivos, uma alternativa é separar a base em duas: uma para o ajuste do modelo, com 70% dos dados (com 477 observações) e outra para validação, com 30% (com 203 observações).
+
+---
+
+## Divisão da Base de Dados
+
+Primeiro vamos fixar uma semente, para que os resultados sejam reproduzíveis:
+
+```{r}
+
+set.seed(1909)
+```
+
+E indexar as linhas da base para realizar a separação dos dados:
+
+```{r}
+indices <- sample(1:680, size = 477) 
+```
+
+Agora, da base total, vamos pegar 70% dos dados (477 linhas da base) para ajuste do modelo:
+
+```{r}
+dadosajuste <- dados[indices,]
+
+```
+
+E 30% (203 linhas) para validação
+
+```{r}
+dadosvalid <- dados[-indices,]
+```
+
+---
+
+## Ponto de Corte
+
+Como estamos modelando a probabilidade de tumor maligno, vamos estabelecer o ponto de corte 0.5, isso é, se a probabilidade estimada for maior que este valor o tumor será classificado como maligno.
+
+Vamos armazenar os valores preditos do modelo para os dados de validação:
+
+```{r}
+
+pred <- predict(ajuste2.1, newdata = dadosvalid, type = 'response')
+
+```
+
+Estabelecer o ponto de corte como 0.5:
+
+```{r}
+corte <- ifelse(pred > 0.5, 'maligno', 'benigno')
+```
+
+E verificar o número de classificações corretas e incorretas
+
+```{r}
+
+tabela <- table(corte, dadosvalid$Class)
+colnames(tabela)<- c('benigno', 'maligno')
+tabela
+```
+
+Ao todo, o modelo aplicado aos dados de validação, cometeu apenas 4 erros, indicando bom poder preditivo do modelo.
+
+---
+
+## Sensibilidade e Especificidade
+
+Para fazer uso dos dados de validação, dois conceitos são necessários: sensibilidade e especificidade.
+
+Define-se por **sensibilidade** a capacidade do modelo de detectar tumores malignos, ou seja, de classificar como malignos os tumores que de fato o são .
+
+Já a **especificidade** é a capacidade do modelo de detectar classificar como benignos tumores verdadeiramente benignos. 
+
+A sensibilidade é dada por:
+
+```{r}
+sens <- tabela[2,2]/sum(tabela[,2])
+sens 
+```
+
+Temos então que a probabilidade de o modelo classificar o tumor como maligno, dado que o tumor é realmente maligno é de aproximadamente 0,97.
+
+Para a especificidade temos:
+
+```{r}
+espec <- tabela[1,1]/sum(tabela[,1])
+espec
+```
+
+A probabilidade de o modelo classificar o tumor como benigno, dado que o tumor é realmente benigno é de aproximadamente 0,98.
+
+Sendo assim, ao que tudo indica, o modelo está bem ajustado e com bom poder de predição.
+
+---
+
+## Curva ROC
+
+A curva ROC (Receiver operating characteristic) é um gráfico que descreve a qualidade preditiva do modelo. É uma representação gráfica da sensibilidade e 1-especificidade.
+O método consiste no gráfico das probabilidades de verdadeiros positivos vs falsos positivos. 
+
+A curva ROC pode ser obtida com os seguintes códigos:
+
+```{r, message=FALSE}
+library(ROCR)
+pred <- prediction(ajuste2.1$fitted.values, dados$Class)
+perf <- performance(pred,"tpr","fpr")
+plot(perf, xlab = '1 - Especificidade', ylab = 'Sensibilidade', 
+     main = "Curva ROC", col = "blue", lwd = 2)
+
+```
+
+Quanto maior a área sob a curva, maior a qualidade do modelo; podemos obter a área sob a curva da seguinte forma:
+
+```{r}
+area <- performance(pred,"auc")
+area@y.values
+```
+
+Como boa parte da área total está sob a curva ROC, verifica-se o bom poder preditivo do modelo.
+
+---
+
+## Outra Alternativa de validação
+
+Outra alternativa para avaliar a qualidade preditiva do modelo seria utilizando validação cruzada. A função cv.glm do pacote boot realiza este procedimento.
+
+---
+
+# Referências
+
+Bennett, K.,P., and Mangasarian, O.L., Neural network training via linear programming. In P. M. Pardalos, editor, Advances in Optimization and Parallel Computing, pages 56-57. Elsevier Science, 1992
+
+Julian Faraway (2016). faraway: Functions and Datasets for Books by Julian
+  Faraway. R package version 1.0.7. https://CRAN.R-project.org/package=faraway
+
+---
+
+<center>
+<table><tr>
+<td> <img src="img/logo.png" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/leg.png" alt="Drawing" style="width: 150px;"/> </td>
+</tr></table>
+</center>
+
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>

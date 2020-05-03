@@ -1,0 +1,59 @@
+name: "my-website"
+
+output_dir: "."
+
+navbar:
+
+  title: "Modelos Lineares Generalizados"
+
+
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+      
+    - text: "Material"
+      icon: fa-list-ol
+      menu:
+        - text: "---------"   
+        - text: "Regressão Linear com Erros Normais"
+          icon: fa-arrow-right
+          href: vinheta1.html
+        - text: "---------"   
+        
+        - text: "Modelos de Regressão para Dados Binários"
+          icon: fa-arrow-right
+          href: vinheta2.html
+        - text: "---------"   
+
+        - text: "Modelos de Regressão para Dados de Contagem"
+          icon: fa-arrow-right
+          href: vinheta3.html
+        - text: "---------"   
+        
+    
+  
+  right:
+    - text: "Lineu A.C.F"
+      icon: fa-user 
+      href: https://lineu96.github.io/st/
+      
+    - icon: fa-github 
+      href: https://github.com/lineu96
+      
+        
+output:
+  html_document:
+    theme: simplex
+    #journal
+    highlight: textmate
+    #include:
+    #  after_body: footer.html
+    #css: styles.css
+
+    # THEMES
+    # default, cerulean, journal, 
+    # flatly, darkly, readable, 
+    # spacelab, united, cosmo, 
+    # lumen, paper, sandstone, 
+    # simplex, and yeti

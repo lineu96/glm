@@ -1,0 +1,527 @@
+---
+output:
+  html_document:                    # Classe de documento.
+    toc: true                       # Exibir sum?rio.
+    toc_depth: 2                    # Profundidade do sum?rio.
+    toc_float:                      # Sum?rio flutuante na borda.
+      collapsed: true
+      smooth_scroll: true
+    number_sections: true           # Seçães numeradas.
+    theme: simplex
+    #default,cerulean,journal,flatly,readable,spacelab,
+    #united,cosmo,lumen,paper,sandstone,simplex,yeti
+    
+    highlight: espresso
+    #default, tango, pygments, kate, monochrome, espresso, zenburn, haddock, and textmate
+    #css: styles.css                 # Caminho para arquivo CSS.
+    fig_width: 7                    # Lagura das figuras.
+    fig_height: 6                   # Altura das figuras.
+    fig_caption: true               # Exibicação de legenda.
+    fig_align: 'center'
+#    code_folding: hide              # Esconder/exibir bloco de c?digo.
+#    keep_md: true                   # Manter o arquivo md.
+    #template: quarterly_report.html # Caminho para o template.  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+library(tidyverse)
+```
+
+<center>
+<table><tr>
+<td> <img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/> </td>
+</tr></table>
+</center>
+
+---
+
+$$\textbf{Lineu Alberto Cavazani de Freitas}$$
+$$\textbf{Prof. Cesar Augusto Taconeli}$$
+$$\textbf{Modelos Lineares Generalizados (CE225)}$$
+
+---
+
+<center>
+<font size="5"> 
+<p align=”center”> <b> Regressão Linear com Erros Normais  </b> </center>
+</font>
+</center>
+
+---
+
+<center>
+<font size="3"> 
+<p align=”center”> <b> Consumo de Combustível  </b> </center>
+</font>
+</center>
+
+---
+
+
+# Dados
+
+---
+
+Exemplo disponível em:
+Paula, G. A. (2004). [Modelos de regressão: com apoio computacional](https://www.ime.usp.br/~giapaula/texto_2013.pdf)
+. São Paulo, SP: IME-USP. (Eg 1.12.5, pág. 94) 
+
+
+---
+
+Dados referentes ao consumo de combustível em 48 estados norte-americanos. 
+
+Variáveis: 
+  
+1. **taxa**: taxa do combustível no estado em USD, 
+2. **licença**: proporção de motoristas licenciados, 
+3. **renda**: renda percapita em USD, 
+4. **estradas**: ajuda federal para as estradas em mil USD,
+5. **consumo**: consumo de combustível por habitante.            
+
+O objetivo neste estudo é explicar o consumo de combustível pelas variáveis taxa, licença, renda e estradas.                                     
+
+Os dados estão disponíveis no pacote [labestData](https://github.com/pet-estatistica/labestData#instalao-e-uso)
+
+```{r}
+library(labestData)
+```
+
+O pacote fornece, além dos dados, sua documentação e um exemplo de análise. Verifique!
+
+Armazenando a base no objeto **dados**:
+
+```{r}
+dados <- PaulaEg1.12.5[ , -1]
+```
+
+Primeiras 6 linhas da base:
+
+```{r}
+head(dados)
+```
+
+---
+
+# Análise Descritiva
+
+Vamos realizar uma breve análise descritiva dos dados.
+
+---
+
+## Medidas Resumo
+
+Usando a função summary verificamos o mínimo, o máximo, a mediana e os quartis para cada variável em estudo.
+
+```{r}
+summary(dados)
+```
+
+As medidas descritivas mostram aparente simetria no que diz respeito às variáveis disponíveis. Nota-se também a grande variação da variável resposta consumo, com valores entre 344 e 968.
+
+---
+
+## Boxplot
+
+O boxplot é uma alternativa de análise descritiva para avaliação da distribuição dos dados.
+
+```{r}
+boxplot(dados$cons, xlab = 'Consumo', col = "#FFCCCC")
+
+```
+
+A verificação do boxplot mostra aparente simetria da variável consumo e a presença de alguns valores atípicos.
+
+---
+
+## Gráficos de Dispersão
+
+Os gráficos de dispersão de cada variável explicativa contra a variável resposta permite verificar, preliminarmente, tendências e valores atípicos.
+
+```{r}
+par(mfrow = c(2,2))
+
+plot(cons~taxa, data = dados, xlab = 'Taxa', ylab = 'Consumo')
+abline(lm(cons~taxa, data = dados), col=2, lwd = 2)
+
+plot(cons~licen, data = dados, xlab = 'Licença', ylab = 'Consumo')
+abline(lm(cons~licen, data = dados), col = 2, lwd = 2)
+
+plot(cons~renda, data = dados, xlab = 'Renda', ylab = 'Consumo')
+abline(lm(cons~renda, data = dados), col = 2, lwd = 2)
+
+plot(cons~estr, data = dados, xlab = 'Estrada', ylab = 'Consumo')
+abline(lm(cons~estr, data = dados), col = 2, lwd = 2)
+
+```
+
+Visualmente, observando a tendência da variável resposta versus cada variável explicativa, vê-se que a que mais aparenta ter relação com o consumo de combustível por habitante é a proporção de motoristas licenciados.
+
+Adicionalmente é recomendável fazer um estudo da matriz de correlaçães dos dados. Para isso, foi utilizado o coeficiente de correlação linear de Pearson.
+
+```{r, message=FALSE}
+cor <- cor(dados[ ,-1])
+cor
+```
+
+Na matriz de correlação evidencia-se a relação entre consumo e proporção de motoristas licenciados. A correlação entre essas duas variáveis é aproximadamente 0,7. Nota-se também a baixa correlação entre consumo e ajuda federal para as estradas.
+
+---
+
+## Histogramas
+
+O histograma é outra alternativa para observar a forma da distribuição dos dados:
+
+-  Consumo de combustível por Habitante (resposta)
+
+```{r}
+hist(dados$cons, probability = TRUE, xlab = 'Consumo', ylab = 'Densidade', 
+     main = '', col = "#FFCCCC", ylim = c(0, 0.0045))
+lines(density(dados$cons), col = "#990000", lwd = 4)
+```
+
+- Variáveis Explicativas
+
+```{r}
+par(mfrow=c(2,2))
+
+hist(dados$taxa, probability = TRUE, xlab = 'Taxa', ylab = 'Densidade', 
+     main = '', col = "#99FF99", ylim = c(0, 0.5))
+lines(density(dados$taxa), col = "#006600", lwd = 4)
+
+hist(dados$licen, probability = TRUE, xlab = 'licença', ylab = 'Densidade', 
+     main = '', col = "#CCFFFF", ylim = c(0, 8))
+lines(density(dados$licen), col = "#000099", lwd = 4)
+
+hist(dados$renda, probability = TRUE, xlab = 'Renda', ylab = 'Densidade', 
+     main = '', col = "#FFCCFF")
+lines(density(dados$renda), col = "#663366", lwd = 4)
+
+hist(dados$estr, probability = TRUE, xlab = 'Estrada', ylab = 'Densidade', 
+     main = '', col = "#E6E8FA", xlim = c(0, +15000))
+lines(density(dados$estr), col = "#545454", lwd = 4)
+```
+
+Marginalmente a variável resposta apresenta distribuição aproximadamente simétrica.
+Quanto às variáveis explicativas, verifica-se certos desvios de simetria, em especial nas variáveis **taxa** e **estrada**. 
+
+---
+
+# Ajuste dos Modelos de regressão
+
+---
+
+## Ajuste 1
+
+Inicialmente, vamos ajustar o modelo de regressão linear múltipla com todas as variáveis de forma aditiva e todas as observaçães.
+
+A expressão do modelo proposto é dada por:
+
+$$
+\newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}$$
+
+$$y_{i}|\undertilde{x_{i}} \sim Normal(\mu_{i}, \sigma^{2})$$
+$$ \newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}$$ 
+$$ \mu_{i} = E(y_{i}|\undertilde{x_{i}}) =  {\beta_{0}} + {\beta_{1}}\, taxa_i + {\beta_{2}}\, licen_i + {\beta_{3}}\, renda_i + {\beta_{4}}\, estr_i$$
+
+```{r}
+ajuste1 <- lm(cons ~ taxa + licen + renda + estr, data = dados)
+```
+
+---
+
+
+### Análise de Resíduos
+
+Parte importante da etapa de ajuste de modelos de regressão linear com erros Normais é a análise de resíduos. Nesta fase deve-se verificar os pressupostos do modelo com base na análise dos resíduos: homocedasticidade, Normalidade, independência e identificação de observações discrepantes. 
+
+```{r}
+par(mfrow=c(2,2))
+plot(ajuste1, which = 1:4)
+```
+
+
+ - O gráfico do canto esquerdo superior trás os resíduos ordinários versus os valores ajustados. Esse gráfico é importante para verificação de possíveis padrões não aleatórios, heterocedasticidade, presença de outliers e pontos influentes; o padrão que indica bom ajuste é o de pontos dispersos aleatóriamente e a linha de tendência aproximadamente constante em torno de zero.
+
+ - O gráfico do canto direito superior mostra os quantis teóricos da distribuição Normal padrão contra os resíduos padronizados. Esse gráfico  permite avaliar a pressuposição de normalidade e, caso não haja normalidade, permite avaliar a forma da distribuição, além de indicar possíveis outliers. Pontos dispersos aleatoriamente, nas proximidades da linha identidade (pontilhada), indicam normalidade.
+ 
+ - O gráfico do canto inferior esquerdo apresenta a raiz quadrada dos resíduos padronizados versus os valores ajustados. Esse gráfico é uma alternativa ao primeiro, baseado nos resíduos padronizados. Tendências nesse gráfico são indicativos de variância não constante.
+ 
+ - E por fim, o gráfico do canto inferior direito apresenta os valores da distância de Cook para cada observação. A distância de Cook é uma medida de diferença das estimativas dos parâmetros do modelo ao considerar e ao desconsiderar uma particular observação no ajuste. Observaçães com valores elevados para essa medida devem ser verificadas.
+ 
+
+Os gráficos de resíduos indicam aparente heterocedasticidade, além de observaçães atípicas.
+
+---
+
+### Verificação de Normalidade
+
+Além do qq-plot é válido explorar outras formas de visualização para verificar aderência dos resíduos à distribuição Normal. 
+
+Outra alternativa é fazer uso do teste de Shapiro-Wilk. Trata-se um teste utilizado para verificar se a distribuição de probabilidade associada a um conjunto de dados pode ser aproximada pela distribuição Normal. As hipóteses do teste são:
+
+$$ \begin{matrix} 
+H_{0} : \textrm{ Os resíduos   têm   distribuição   normal}
+\\ 
+H_{1} : \textrm{Os resíduos não têm distribuição normal}
+\end{matrix} $$
+
+```{r, message=FALSE}
+par(mfrow=c(1,2))
+
+hist(ajuste1$residuals, probability = TRUE, main = 'Resíduos do Ajuste',
+      xlab = 'Resíduos', ylab = 'Frequência', col = "#FFFFCC") # histograma dos residuos
+ lines(density(ajuste1$residuals), col = "#666600", lwd = 4)
+ 
+ library(hnp)
+ hnp(ajuste1, main = 'Gráfico Normal com Envelope', xlab = 'Quantis Teóricos', ylab = 'Resíduos') 
+
+ shapiro.test(ajuste1$residuals) 
+```
+
+A análise gráfica apresenta alguns desvios de normalidade. Quanto ao teste de Shapiro-Wilk, ao nível de significância de 5% há evidência suficiente para a rejeição da hipótese nula. 
+
+--- 
+
+### Medidas de Infuência
+
+A função `influence.measures` retorna diferentes medidas de influência e indica potenciais observaçães influentes no modelo ajustado. São calculados, para cada observação, os valores para DFBETAS, DFFITS, COVRATIO, destância de cook, e os elementos da diagonal da matriz de projeção ortogonal (matriz H).
+
+**DFBETAS**: Medida de influência nas estimativas dos parâmetros do modelo (avaliados um a um);
+
+**DFFITS**: Medida de diferença nos valores ajustados;
+
+**COVRATIO**: Medida de alteração na precisão das estimativas dos parâmetros do modelo;
+
+**COOK**: Medida de diferença no conjunto de estimativas dos parâmetros do modelo;
+
+**HAT**: Corresponde é diagonal da matriz de projeção da solução de mínimos quadrados. Tais medidas expressam quão extremas são as observaçães no espaço das covariáveis.
+
+```{r}
+inf <- influence.measures(ajuste1) 
+summary(inf)
+```
+
+Com base nos resultados da análise de influência, deve-se:
+
+ - Estudar os perfis dos indivíduos 4, 19, 27, 30 e 44. 
+ - Buscar compreender o motivo dos valores discrepantes para as correspondentes medidas;
+ - Avaliar o efeito dessas observaçães no ajuste (ajustando um novo modelo sem esses dados e comparando os resultados).
+
+---
+
+## Ajuste 2
+
+Vamos ajustar o modelo de regressão linear múltipla com todas as variáveis e sem as observaçães 19 e 44, sinalizadas com valores elevados para duas ou mais medidas de influência.
+
+```{r}
+ajuste2 <- lm(cons ~ taxa+licen+renda+estr, data = dados[-c(19, 44), ])
+```
+
+Vamos usar a função *compareCoefs*, do pacote *car*, para confrontar os resultados dos dois ajustes:
+
+```{r, message=FALSE}
+library(car)
+compareCoefs(ajuste1, ajuste2)
+```
+
+Embora algumas estimativas e erros padrões tenham seus valores reduzidos após exclusão das duas observaçães, não há alteraçães substanciais quanto às conclusões dos dois modelos (as relaçães estimativa/erro padrão aproximadamente se mantém, os sinais das estimativas são os mesmos). 
+
+Vamos avaliar o impacto dessas duas observaçães na distribuição dos resíduos:
+
+
+```{r}
+require(hnp)
+shapiro.test(ajuste2$residuals)
+hnp(ajuste2)
+```
+
+O teste de Shapiro-Wilks e o qq-plot com envelopes simulados indicam agora aderência à distribuição Normal. Para a sequência da análise, no entanto, serão consideradas todas as observaçães, visto que não há alteraçães inferenciais importantes decorrentes da manutenção desses dois pontos.
+
+
+Para complementar a análise de resíduos, vamos usar os gráficos de componente + resíduos (função *crPlots* do pacote *car*). Nesse tipo de gráfico tem-se os resíduos versus cada covariável. No entanto, os resíduos são resultantes do ajuste de todas as demais covariáveis (exceto aquela que aparece no eixo horizontal). Permitem avaliar a necessidade e forma de inclusão de cada covariável ao modelo que contém as demais covariáveis.
+
+```{r}
+library(car)
+crPlots(ajuste1)
+```
+
+Pode-se verificar relação decrescente quanto às variáveis **taxa** e **renda** e crescente quanto a **licen**. Com relação é variável **estr**, aparentemente não há relação entre a resposta e essa variável uma vez ajustado o efeito das demais covariáveis.
+
+---
+
+### Resumo do Modelo Ajustado
+
+```{r}
+summary(ajuste1)
+```
+
+O resumo indica que as variáveis **taxa**, **licen** e **renda** estão associadas ao consumo, enquanto a variável **estr** não apresenta relação. Vamos ajustar o modelo linear com erros normais agora sem a variável **estr**.
+
+---
+
+## Ajuste 3
+
+Aqui ajustamos o modelo de regressão linear sem a variável ajuda federal para as estradas.
+
+```{r}
+ajuste3 <- lm(cons ~ taxa + licen + renda, data = dados)
+```
+
+---
+
+### Análise de resíduos
+
+```{r}
+par(mfrow=c(2,2))
+plot(ajuste3, which = 1:4)
+```
+
+---
+
+### Verificação de Normalidade
+
+```{r}
+par(mfrow = c(1,2))
+
+hist(ajuste3$residuals, probability = TRUE, main = 'Resíduos do Ajuste',
+     xlab = 'Resíduos', ylab = 'Frequência', col = "#FFFFCC",
+     ylim = c(0,0.007)) 
+
+lines(density(ajuste3$residuals), col = "#666600", lwd = 4)
+
+library(hnp)
+ hnp(ajuste3, main = 'Gráfico Normal com Envelope', xlab = 'Quantis Teóricos', ylab = 'Resíduos') 
+
+shapiro.test(ajuste3$residuals)
+
+```
+O resultado do diagnóstico deste ajuste é bastante similar ao verificado para o primeiro modelo. Dessa forma, vamos omitir a etapa de verificação de outliers e observações influentes e seguir para a análise do modelo ajustado.
+
+---
+
+# Análise do Modelo Ajustado
+
+As interpretações são baseadas no ajuste do modelo 3, em que foram considerados os dados dos 48 estados e eliminada a variável referente à ajuda federal.
+
+---
+
+## Resumo do Modelo
+
+```{r}
+summary(ajuste3)
+```
+
+No summary do modelo podemos verificar o coeficiente de variação igual a 0.675, o que indica que 67,5% da variação referente é variável resposta é explicada pelas variáveis regressoras usadas no modelo. Adicionalmente, o teste F correspondente é hipótese nula de não significância do modelo ($H_0: \beta_1 = \beta_2 = \beta_3 = 0$) produziu p=8.235e-11, indicando a significância do modelo. Cada uma das Variáveis apresentou efeito significativo, ao nível de 5% de significância, ajustado o efeito ads demais covariáveis.
+
+---
+
+## Estimativas
+
+Os valores estimados para os parâmetros do modelo são:
+```{r}
+coefficients(ajuste3)
+```
+
+E os interavalos com 95% de confiança para os parâmetros do modelo:
+```{r}
+confint(ajuste3)
+```
+
+---
+
+## Modelo Ajustado
+
+A expressão do modelo ajustado fica dada por: 
+
+\[E[\widehat{y|x}] = 307,32 - 29,48 \,\, taxa_i + 1374,77 \,\, licen_i - 0.07 \,\, renda_i\]
+
+
+---
+
+## Interpretação das Estimativas
+
+ - Para cada unidade de aumento na variável taxa, estima-se, em média, um decréscimo de aproximadamente 29,49 unidades na variável consumo, mantendo-se fixas as demais variáveis do modelo - IC:(-50,81 ; -8,15);
+
+ - Para cada unidade de aumento na variável licen, estima-se, em média, um acréscimo de 1374 unidades na variável consumo, mantendo-se fixas as demais Variáveis do modelo - IC:(1004 ; 1745);
+
+ - Para cada unidade de aumento na variável renda, estima-se, em média, um decréscimo de 0,07 unidade na variável consumo - IC:(-0,10 ; -0,03).
+
+---
+
+## Gráfico de Efeitos
+
+A função effects, do pacote de mesmo nome, devolve os efeitos marginais de cada variável um modelo ajustado; os gráficos de efeitos nos fornecem uma forma visual de observar como cada variável explicativa afeta a resposta, com as demais variáveis fixadas na média. 
+
+```{r, message=FALSE}
+library(effects)
+
+plot(allEffects(ajuste3), type = 'response')
+```
+
+---
+
+## Usando o Modelo Ajustado para Prediçães 
+
+Para fins de ilustração, vamos considerar os seguintes perfis para dois estados distintos:
+
+**Perfil 1:**
+
+1. Taxa do combustível no estado = 7.668333
+2. Proporção de motoristas licenciados = 0.5703333
+3. Renda percapita no estado = 4241.833 
+
+**Perfil 2**
+
+1. Taxa do combustível no estado = 8.483667
+2. Proporção de motoristas licenciados = 0.6258036
+3. Renda percapita no estado = 4815.457
+
+E responder a seguinte pergunta: *Qual é o consumo médio (ou esperado) de combustível por habitante em estados que tem o Perfil 1 e o Perfil 2?*
+
+```{r}
+perfis <- data.frame(taxa = c(7.668333, 8.483667), 
+                     licen = c(0.5703333, 0.6258036), 
+                     renda = c(4241.833, 4815.457))
+```
+
+Obtemos assim:
+
+ - As estimativas pontuais:
+ 
+```{r}
+predict(ajuste3, newdata = perfis) 
+```
+
+ - Intervalos de confiança (95%) para o consumo médio médio.
+ 
+```{r}
+predict(ajuste3, interval = 'confidence', newdata = perfis)
+```
+
+ - Intervalos de confiança (95%) para a predição.
+
+```{r}
+predict(ajuste3, interval = 'prediction', newdata = perfis)
+```
+
+E, finalmente, respondendo a pergunta:
+
+O consumo médio estimado de combustível por habitante de um estado qualquer com o Perfil 1 é igual a 576.77; enquanto para um estado com o Perfil 2 a estimativa é de 589.97.
+
+---
+
+
+<center>
+<table><tr>
+<td> <img src="img/logo.png" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/leg.png" alt="Drawing" style="width: 150px;"/> </td>
+</tr></table>
+</center>
+
+
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>

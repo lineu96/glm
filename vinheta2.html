@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>vinheta2.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #2a211c;
+    color: #bdae9d;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #bdae9d;  padding-left: 4px; }
+div.sourceCode
+  { color: #bdae9d; background-color: #2a211c; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffff00; } /* Alert */
+code span.an { color: #0066ff; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #44aa43; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #43a8ed; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #049b0a; } /* Char */
+code span.cn { } /* Constant */
+code span.co { color: #0066ff; font-weight: bold; font-style: italic; } /* Comment */
+code span.do { color: #0066ff; font-style: italic; } /* Documentation */
+code span.dt { text-decoration: underline; } /* DataType */
+code span.dv { color: #44aa43; } /* DecVal */
+code span.er { color: #ffff00; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #44aa43; } /* Float */
+code span.fu { color: #ff9358; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #0066ff; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #43a8ed; font-weight: bold; } /* Keyword */
+code span.op { } /* Operator */
+code span.pp { font-weight: bold; } /* Preprocessor */
+code span.sc { color: #049b0a; } /* SpecialChar */
+code span.ss { color: #049b0a; } /* SpecialString */
+code span.st { color: #049b0a; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #049b0a; } /* VerbatimString */
+code span.wa { color: #ffff00; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 41px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h2 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h3 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h4 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h5 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.section h6 {
+  padding-top: 46px;
+  margin-top: -46px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Modelos Lineares Generalizados</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-list-ol"></span>
+     
+    Material
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="divider"></li>
+    <li>
+      <a href="vinheta1.html">
+        <span class="fa fa-arrow-right"></span>
+         
+        Regressão Linear com Erros Normais
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="vinheta2.html">
+        <span class="fa fa-arrow-right"></span>
+         
+        Modelos de Regressão para Dados Binários
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="vinheta3.html">
+        <span class="fa fa-arrow-right"></span>
+         
+        Modelos de Regressão para Dados de Contagem
+      </a>
+    </li>
+    <li class="divider"></li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://lineu96.github.io/st/">
+    <span class="fa fa-user"></span>
+     
+    Lineu A.C.F
+  </a>
+</li>
+<li>
+  <a href="https://github.com/lineu96">
+    <span class="fa fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<center>
+<table>
+<tr>
+<td>
+<img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/>
+</td>
+</tr>
+</table>
+</center>
+<hr />
+<p><span class="math display">\[\textbf{Lineu Alberto Cavazani de Freitas}\]</span> <span class="math display">\[\textbf{Prof. Cesar Augusto Taconeli}\]</span> <span class="math display">\[\textbf{Modelos Lineares Generalizados (CE225)}\]</span></p>
+<hr />
+<center>
+<font size="5">
+<p align=”center”>
+<b> Modelos de Regressão para Dados Binários </b>
+</center>
+</font>
+</center>
+<hr />
+<center>
+<font size="3">
+<p align=”center”>
+<b> Casos de Câncer de Mama de Wisconsin </b>
+</center>
+</font>
+</center>
+<hr />
+<div id="dados" class="section level1">
+<h1><span class="header-section-number">1</span> Dados</h1>
+<hr />
+<p>Exemplo disponível em Bennett, K.,P., and Mangasarian, O.L., 1992</p>
+<hr />
+<p>Os dados provêm de um estudo de câncer de mama em Wisconsin. São 681 casos de tumores potencialmente cancerosos, dos quais 238 são realmente malignos.</p>
+<p>As variáveis explicativas disponíveis dizem respeito a características observadas nos tumores sob estudo.</p>
+<p>Os valores das variáveis preditoras foram determinados por um médico observando as células e classificando-as em uma escala de 1 (normal) a 10 (mais anormal) em relação a cada característica avaliada.</p>
+<p>Variáveis:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Class</strong> - classificação do tumor: 0 maligno, 1 benigno (resposta)</li>
+<li><strong>Adhes</strong> - adesão marginal</li>
+<li><strong>BNucl</strong> - nucléolos nus</li>
+<li><strong>Chrom</strong> - cromatina branda</li>
+<li><strong>Epith</strong> - tamanho da célula epitelial</li>
+<li><strong>Mitos</strong> - mitose</li>
+<li><strong>NNucl</strong> - nucléolo normal</li>
+<li><strong>Thick</strong> - espessura do aglomerado</li>
+<li><strong>UShap</strong> - uniformidade da forma da célula</li>
+<li><strong>USize</strong> - uniformidade do tamanho da célula</li>
+</ol>
+<p>O objetivo da análise foi modelar a probabilidade de do tumor sob investigação ser maligno.</p>
+<p>Os dados estão disponíveis no pacote de Julian Faraway (2016). O pacote fornece a documentação dos dados. Verifique!</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(faraway)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">data</span>(wbca)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">dados &lt;-<span class="st"> </span>wbca</a></code></pre></div>
+<p>Verificando a quantidade de tumores benignos na base (<code>Class = 1</code>):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">sum</span>(dados<span class="op">$</span>Class<span class="op">==</span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 443</code></pre>
+<p>Vamos redefinir os níveis da variável classe de forma a modelar a probabilidade de tumor maligno:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">dados<span class="op">$</span>Class &lt;-<span class="st"> </span><span class="kw">ifelse</span>(dados<span class="op">$</span>Class <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</a></code></pre></div>
+<p>Outras opções para a conversão são as funções <code>levels</code>e <code>relevel</code>.</p>
+<p>E agora sim, os 238 tumores malignos estão codificados como 1, enquanto os benignos estão codificados como 0.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">sum</span>(dados<span class="op">$</span>Class<span class="op">==</span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 238</code></pre>
+<p>As primeiras 6 linhas da base de dados têm a seguinte forma:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">head</span>(dados)</a></code></pre></div>
+<pre><code>##   Class Adhes BNucl Chrom Epith Mitos NNucl Thick UShap USize
+## 1     0     1     1     3     2     1     1     5     1     1
+## 2     0     5    10     3     7     1     2     5     4     4
+## 3     0     1     2     3     2     1     1     3     1     1
+## 4     0     1     4     3     3     1     7     6     8     8
+## 5     0     3     1     3     2     1     1     4     1     1
+## 6     1     8    10     9     7     1     7     8    10    10</code></pre>
+<p>Com os ajustes realizados, pode-se fazer a análise descritiva da base de dados:</p>
+<hr />
+</div>
+<div id="analise-descritiva" class="section level1">
+<h1><span class="header-section-number">2</span> Análise Descritiva</h1>
+<p>Vamos realizar uma breve análise descritiva dos dados.</p>
+<hr />
+<div id="medidas-resumo" class="section level2">
+<h2><span class="header-section-number">2.1</span> Medidas Resumo</h2>
+<p>Usando a função summary vamos verificar o mínimo, o máximo, a mediana e os quartis das variáveis explicativas em estudo:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">summary</span>(dados[ , <span class="dv">2</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
+<pre><code>##      Adhes            BNucl            Chrom            Epith       
+##  Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+##  1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.: 2.000   1st Qu.: 2.000  
+##  Median : 1.000   Median : 1.000   Median : 3.000   Median : 2.000  
+##  Mean   : 2.816   Mean   : 3.542   Mean   : 3.433   Mean   : 3.231  
+##  3rd Qu.: 4.000   3rd Qu.: 6.000   3rd Qu.: 5.000   3rd Qu.: 4.000  
+##  Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+##      Mitos            NNucl            Thick            UShap       
+##  Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+##  1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.: 2.000   1st Qu.: 1.000  
+##  Median : 1.000   Median : 1.000   Median : 4.000   Median : 1.000  
+##  Mean   : 1.604   Mean   : 2.859   Mean   : 4.436   Mean   : 3.204  
+##  3rd Qu.: 1.000   3rd Qu.: 4.000   3rd Qu.: 6.000   3rd Qu.: 5.000  
+##  Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+##      USize      
+##  Min.   : 1.00  
+##  1st Qu.: 1.00  
+##  Median : 1.00  
+##  Mean   : 3.14  
+##  3rd Qu.: 5.00  
+##  Max.   :10.00</code></pre>
+<p>Nota-se pelas medidas resumo a predominância de tumores com células classificadas como normais já que os valores das médias são, em sua maioria, baixos, distantes do valor máximo (10) considerado anormal.</p>
+<hr />
+</div>
+<div id="boxplots" class="section level2">
+<h2><span class="header-section-number">2.2</span> Boxplots</h2>
+<p>O boxplot é uma alternativa de análise descritiva para avaliação da distribuição dos dados.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(dados)) {</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">  <span class="kw">boxplot</span>(dados[,i], </a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">          <span class="dt">xlab =</span> <span class="st">&#39;&#39;</span>, </a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">          <span class="dt">ylab =</span> <span class="st">&#39;&#39;</span>, </a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">          <span class="dt">main =</span> <span class="kw">names</span>(dados[i]), </a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">          <span class="dt">las=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">          <span class="dt">col =</span> <span class="st">&#39;#A2F4D6&#39;</span>)</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="kw">mtext</span>(<span class="dt">side=</span><span class="dv">2</span>,<span class="dt">cex=</span><span class="fl">1.3</span>,<span class="dt">line=</span><span class="op">-</span><span class="fl">1.5</span>,<span class="dt">text=</span><span class="st">&quot;Nota na Avaliação Médica&quot;</span>,<span class="dt">outer=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Os boxplots também fornecem indícios de valores predominantemente baixos, e portanto, assimetria nas distribuições variáveis explicativas.</p>
+<hr />
+</div>
+<div id="histogramas" class="section level2">
+<h2><span class="header-section-number">2.3</span> Histogramas</h2>
+<p>O histograma é outra alternativa para observar a forma da distribuição dos dados.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="kw">ncol</span>(dados)) {</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="kw">hist</span>(dados[,i], </a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">          <span class="dt">xlab =</span> <span class="st">&#39;&#39;</span>, </a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">          <span class="dt">ylab =</span> <span class="st">&#39;&#39;</span>, </a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">          <span class="dt">main =</span> <span class="kw">names</span>(dados[i]), </a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">          <span class="dt">las=</span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">          <span class="dt">col =</span> <span class="st">&#39;#FACACC&#39;</span>)</a>
+<a class="sourceLine" id="cb12-10" data-line-number="10">}</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Os histogramas apontam na mesma direção das análises anteriores. Aqui fica claro, para todas as variáveis, a predominância de valores entre 0 e 2.</p>
+<hr />
+</div>
+<div id="distribuicao-dos-valores-das-covariaveis-para-tumores-benignos-e-malignos" class="section level2">
+<h2><span class="header-section-number">2.4</span> Distribuição dos valores das covariáveis para tumores benignos e malignos</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">library</span>(gridExtra)</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">bp &lt;-<span class="st"> </span><span class="cf">function</span>(covariavel, xlab){</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">  <span class="kw">ggplot</span>(dados, </a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">         <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">factor</span>(Class), </a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">             <span class="dt">y=</span>covariavel, </a>
+<a class="sourceLine" id="cb13-8" data-line-number="8">             <span class="dt">color=</span><span class="kw">factor</span>(Class))) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="st">    </span><span class="kw">geom_boxplot</span>()<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="st">    </span><span class="kw">guides</span>(<span class="dt">color=</span><span class="ot">FALSE</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="st">    </span><span class="kw">xlab</span>(xlab)<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&#39;&#39;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="st">    </span><span class="kw">theme_light</span>()</a>
+<a class="sourceLine" id="cb13-14" data-line-number="14">  }</a>
+<a class="sourceLine" id="cb13-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb13-16" data-line-number="16">g1 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">2</span>],<span class="kw">names</span>(dados[<span class="dv">2</span>]))</a>
+<a class="sourceLine" id="cb13-17" data-line-number="17">g2 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">3</span>],<span class="kw">names</span>(dados[<span class="dv">3</span>]))</a>
+<a class="sourceLine" id="cb13-18" data-line-number="18">g3 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">4</span>],<span class="kw">names</span>(dados[<span class="dv">4</span>]))</a>
+<a class="sourceLine" id="cb13-19" data-line-number="19">g4 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">5</span>],<span class="kw">names</span>(dados[<span class="dv">5</span>]))</a>
+<a class="sourceLine" id="cb13-20" data-line-number="20">g5 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">6</span>],<span class="kw">names</span>(dados[<span class="dv">6</span>]))</a>
+<a class="sourceLine" id="cb13-21" data-line-number="21">g6 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">7</span>],<span class="kw">names</span>(dados[<span class="dv">7</span>]))</a>
+<a class="sourceLine" id="cb13-22" data-line-number="22">g7 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">8</span>],<span class="kw">names</span>(dados[<span class="dv">8</span>]))</a>
+<a class="sourceLine" id="cb13-23" data-line-number="23">g8 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">9</span>],<span class="kw">names</span>(dados[<span class="dv">9</span>]))</a>
+<a class="sourceLine" id="cb13-24" data-line-number="24">g9 &lt;-<span class="st"> </span><span class="kw">bp</span>(dados[,<span class="dv">10</span>],<span class="kw">names</span>(dados[<span class="dv">10</span>]))</a>
+<a class="sourceLine" id="cb13-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb13-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb13-27" data-line-number="27"><span class="kw">grid.arrange</span>(g1, g2, g3, g4, g5, g6, g7,g8 ,g9, <span class="dt">ncol=</span><span class="dv">3</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Os gráficos mostram que observações correspondentes a tumores malignos (codificados como 1) tendem a apresentar escores mais elevados para as covariáveis consideradas.</p>
+<hr />
+</div>
+<div id="analise-das-correlacoes-entre-as-covariaveis" class="section level2">
+<h2><span class="header-section-number">2.5</span> Análise das correlações entre as covariáveis</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">cor &lt;-<span class="st"> </span><span class="kw">cor</span>(dados[ , <span class="dv">2</span><span class="op">:</span><span class="dv">10</span>])</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">library</span>(corrplot)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="kw">corrplot.mixed</span>(cor, <span class="dt">upper =</span> <span class="st">&quot;ellipse&quot;</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Todas as covariáveis apresentam correlações positivas. Em diversos casos foram verificados valores superiores a 0.7, configurando correlações bastante expressivas.</p>
+<hr />
+</div>
+<div id="uma-forma-eficiente-de-explorar-relacoes" class="section level2">
+<h2><span class="header-section-number">2.6</span> Uma forma eficiente de explorar relações</h2>
+<p>Fazendo uso da função <code>pairs.panels</code> do pacote <code>psych</code> é possível verificar numa matriz: os gráficos de dispersão das variáveis duas a duas (na triangular inferior), as estimativas das correlações (na triangular superior) e os histogramas com as densidades na diagonal principal. Num único gráfico podemos verificar relações entre as variáveis e suas distribuições marginais.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(psych)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw">pairs.panels</span>(dados[ , <span class="dv">2</span><span class="op">:</span><span class="dv">10</span>], </a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">             <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>,</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">             <span class="dt">hist.col =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">             <span class="dt">density =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">             <span class="dt">ellipses =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb15-8" data-line-number="8">             <span class="dt">pch =</span> <span class="dv">20</span>,</a>
+<a class="sourceLine" id="cb15-9" data-line-number="9">             <span class="dt">lwd =</span> <span class="fl">0.01</span></a>
+<a class="sourceLine" id="cb15-10" data-line-number="10">)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Por mais que seja um recurso interessante deve-se atentar para o fato de que se há muitas variáveis no estudo a visualização fica comprometida.</p>
+<hr />
+</div>
+</div>
+<div id="ajuste-dos-modelos-de-regressao" class="section level1">
+<h1><span class="header-section-number">3</span> Ajuste dos Modelos de Regressão</h1>
+<p>Os modelos de regressão para dados binários com distribuição de probabilidades binomial para a resposta são definidos da seguinte forma:</p>
+<p><span class="math display">\[
+\newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}
+\]</span> <span class="math display">\[y_{i}|\undertilde{x_{i}} \sim Binomial (m_{i}, \pi_{i})\]</span></p>
+<p><span class="math display">\[ \newcommand{\undertilde}[1]{\underset{\widetilde{}}{#1}}\]</span></p>
+<p><span class="math display">\[ g(\pi_{i}) =  {\beta_{0}} + {\beta_{1}}\, x_{i1} + {\beta_{2}}\, x_{i2} + ... + {\beta_{p}}\, x_{ip},\]</span></p>
+<p>onde <span class="math inline">\(y_i\)</span> é a variável resposta, <span class="math inline">\(x_{i1}, x_{i2}, ..., x_{ip}\)</span> as variáveis explicativas avaliadas no <span class="math inline">\(i-\)</span>ésimo indivíduo e, neste caso, <span class="math inline">\(m_{i}\)</span> = 1 já que a variável resposta assume valores 0 ou 1, se tratando portanto de variáveis com distribuição de Bernoulli. Por fim, <span class="math inline">\(g(\pi_{i})\)</span> é a função de ligação, se trata de uma função real, monótona e diferenciável, que associa e lineariza a relação entre o componente aleatório e o sistemático do modelo.</p>
+<p>Neste problema estamos interessados em modelar a probabilidade de tumor maligno em função das covariáveis.</p>
+<p>Nas seções seguintes são mostrados o ajuste dos Modelos Lineares Generalizados para dados binários considerando as covariáveis de forma aditiva com diferentes funções de ligação.</p>
+<hr />
+<div id="ligacao-logito" class="section level2">
+<h2><span class="header-section-number">3.1</span> Ligação logito</h2>
+<p>Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Logito. A expressão do modelo é dada por:</p>
+<p><span class="math display">\[ ln\left ( \frac{\pi _{i}}{1-\pi _{i}}\right )
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}\]</span></p>
+<p>No R, o modelo é declarado da seguinte forma:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">ajuste1 &lt;-<span class="st"> </span><span class="kw">glm</span>(Class <span class="op">~</span><span class="st"> </span>.,<span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&#39;logit&#39;</span>),<span class="dt">data =</span> dados)</a></code></pre></div>
+<hr />
+</div>
+<div id="ligacao-probito" class="section level2">
+<h2><span class="header-section-number">3.2</span> Ligação probito</h2>
+<p>Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Probito. A expressão do modelo é dada por:</p>
+<p><span class="math display">\[ \phi ^{-1} (\pi _{i})
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i},\]</span></p>
+<p>em que <span class="math inline">\(\phi ^{-1}\)</span> é a inversa da acumulada da distribuição Normal.</p>
+<p>No R, o modelo é declarado da seguinte forma:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">ajuste2 &lt;-<span class="st"> </span><span class="kw">glm</span>(Class <span class="op">~</span><span class="st"> </span>.,<span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link =</span> <span class="st">&#39;probit&#39;</span>),<span class="dt">data =</span> dados)</a></code></pre></div>
+<hr />
+</div>
+<div id="ligacao-complemento-log-log" class="section level2">
+<h2><span class="header-section-number">3.3</span> Ligação complemento Log-Log</h2>
+<p>Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Complemento Log Log. A expressão do modelo é dada por:</p>
+<p><span class="math display">\[ ln[-ln(1-\pi _{i})]
+= {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}\]</span></p>
+<p>No R, o modelo é declarado da seguinte forma:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">ajuste3 &lt;-<span class="st"> </span><span class="kw">glm</span>(Class <span class="op">~</span><span class="st"> </span>.,<span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&#39;cloglog&#39;</span>),<span class="dt">data =</span> dados)</a></code></pre></div>
+<hr />
+</div>
+<div id="ligacao-cauchy" class="section level2">
+<h2><span class="header-section-number">3.4</span> Ligação Cauchy</h2>
+<p>Vamos ajustar um Modelo Linear Generalizado Binomial com função de ligação Cauchy. A expressão do modelo é dada por:</p>
+<p><span class="math display">\[ tan[\pi_{i}(\mu_{i}-0,5)]
+ =  {\beta_{0}} + {\beta_{1}}\, Adhes_{i} + {\beta_{2}}\, BNucl_{i} + {\beta_{3}}\, Chrom_{i} +\\ {\beta_{4}}\, Epith_{i} + {\beta_{5}}\, Mitos_{i} + {\beta_{6}}\, NNucl_{i} + {\beta_{7}}\, Thick_{i} + {\beta_{8}}\, UShap_{i} + {\beta_{9}}\, USize_{i}\]</span></p>
+<p>No R, o modelo é declarado da seguinte forma:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">ajuste4 &lt;-<span class="st"> </span><span class="kw">glm</span>(Class <span class="op">~</span><span class="st"> </span>.,<span class="dt">family=</span><span class="kw">binomial</span>(<span class="dt">link=</span><span class="st">&#39;cauchit&#39;</span>),<span class="dt">data =</span> dados)</a></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="escolha-do-modelo" class="section level1">
+<h1><span class="header-section-number">4</span> Escolha do Modelo</h1>
+<p>Para seleção de modelos diversas medidas podem ser utilizadas, em especial vamos utilizar a verossimilhança dos modelos.</p>
+<p>O critério de informação AIC pode também ser utilizado, porém o AIC penaliza o número de parâmetros do modelo. Como os modelos tem o mesmo número de parâmetros, o critério aponta para a mesma direção da verossimilhança pois todos são penalizados da mesma forma; para fins de ilustração, as duas quantidades são exibidas:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">selec &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">ajuste=</span><span class="kw">c</span>(<span class="st">&#39;logito&#39;</span>, <span class="st">&#39;probito&#39;</span>, <span class="st">&#39;cloglog&#39;</span>, <span class="st">&#39;cauchy&#39;</span>),</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">                    <span class="dt">aic=</span><span class="kw">c</span>(<span class="kw">AIC</span>(ajuste1), <span class="kw">AIC</span>(ajuste2), <span class="kw">AIC</span>(ajuste3), <span class="kw">AIC</span>(ajuste4)),</a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">                    <span class="dt">logLik=</span><span class="kw">c</span>(<span class="kw">logLik</span>(ajuste1),<span class="kw">logLik</span>(ajuste2),<span class="kw">logLik</span>(ajuste3),<span class="kw">logLik</span>(ajuste4)))</a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb20-5" data-line-number="5">selec</a></code></pre></div>
+<pre><code>##    ajuste      aic    logLik
+## 1  logito 109.4642 -44.73210
+## 2 probito 106.8797 -43.43987
+## 3 cloglog 119.6111 -49.80556
+## 4  cauchy 126.5381 -53.26907</code></pre>
+<p>O modelo que apresentou menor AIC e maior verossimilhança foi o modelo Binomial com função de ligação Probito.</p>
+<hr />
+</div>
+<div id="analise-do-modelo-ajustado-selecionado" class="section level1">
+<h1><span class="header-section-number">5</span> Análise do modelo ajustado selecionado</h1>
+<p>Vamos seguir as análises fazendo uso do modelo Binomial com função de ligação Probito.</p>
+<hr />
+<div id="resumo-do-modelo" class="section level2">
+<h2><span class="header-section-number">5.1</span> Resumo do Modelo</h2>
+<p>O modelo original foi ajustado usando todas as covariáveis disponíveis. Vamos verificar no resumo do modelo selecionado quais covariáveis apresentam efeito significativo na classificação do tumor.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">summary</span>(ajuste2)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = Class ~ ., family = binomial(link = &quot;probit&quot;), 
+##     data = dados)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -2.96496  -0.06320  -0.01838   0.00098   2.48862  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -5.86630    0.66528  -8.818  &lt; 2e-16 ***
+## Adhes        0.19293    0.07077   2.726  0.00641 ** 
+## BNucl        0.21303    0.05093   4.183 2.88e-05 ***
+## Chrom        0.30639    0.09454   3.241  0.00119 ** 
+## Epith        0.03337    0.08794   0.380  0.70431    
+## Mitos        0.28929    0.17243   1.678  0.09340 .  
+## NNucl        0.15092    0.06424   2.349  0.01880 *  
+## Thick        0.32533    0.08184   3.975 7.03e-05 ***
+## UShap        0.17603    0.12251   1.437  0.15075    
+## USize       -0.03461    0.11361  -0.305  0.76063    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 881.39  on 680  degrees of freedom
+## Residual deviance:  86.88  on 671  degrees of freedom
+## AIC: 106.88
+## 
+## Number of Fisher Scoring iterations: 9</code></pre>
+<p>O resumo do modelo ajustado indica que as variáveis adesão marginal, nucléolos nus, cromatina branda, nucléolo normal e espessura do aglomerado estão associadas a uma maior probabilidade de tumor maligno, enquanto as demais variáveis não apresentam relação com a resposta.</p>
+<hr />
+</div>
+<div id="reajuste-do-modelo" class="section level2">
+<h2><span class="header-section-number">5.2</span> Reajuste do Modelo</h2>
+<p>Como as covariáveis são altamente correlacionadas, é válido inserir as covariáveis uma a uma no modelo para verificar sua significância na presença das outras, tal como o realizado pelo algoritmo stepwise.</p>
+<p>Sendo assim, o novo modelo fica da seguinte forma:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">ajuste2<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">step</span>(ajuste2, <span class="dt">direction =</span> <span class="st">&quot;both&quot;</span>)</a></code></pre></div>
+<p>O resumo do novo modelo ajustado:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">summary</span>(ajuste2<span class="fl">.1</span>)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = Class ~ Adhes + BNucl + Chrom + Mitos + NNucl + 
+##     Thick + UShap, family = binomial(link = &quot;probit&quot;), data = dados)
+## 
+## Deviance Residuals: 
+##      Min        1Q    Median        3Q       Max  
+## -2.98417  -0.06380  -0.01957   0.00098   2.44529  
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept) -5.80235    0.64082  -9.055  &lt; 2e-16 ***
+## Adhes        0.19430    0.06795   2.859 0.004246 ** 
+## BNucl        0.21453    0.05062   4.238 2.25e-05 ***
+## Chrom        0.30798    0.09308   3.309 0.000937 ***
+## Mitos        0.28407    0.17099   1.661 0.096646 .  
+## NNucl        0.15272    0.06159   2.480 0.013147 *  
+## Thick        0.32367    0.08088   4.002 6.29e-05 ***
+## UShap        0.15747    0.08938   1.762 0.078123 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 881.388  on 680  degrees of freedom
+## Residual deviance:  87.093  on 673  degrees of freedom
+## AIC: 103.09
+## 
+## Number of Fisher Scoring iterations: 9</code></pre>
+<p>O algoritmo indica que as variáveis tamanho da célula epitelial e uniformidade do tamanho da célula, de fato, não são necessárias para o ajuste.</p>
+<p>Agora, vamos realizar o teste da razão de verossimilhança do modelo inicial e do reduzido:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">anova</span>(ajuste2, ajuste2<span class="fl">.1</span>, <span class="dt">test =</span> <span class="st">&#39;Chisq&#39;</span>)</a></code></pre></div>
+<pre><code>## Analysis of Deviance Table
+## 
+## Model 1: Class ~ Adhes + BNucl + Chrom + Epith + Mitos + NNucl + Thick + 
+##     UShap + USize
+## Model 2: Class ~ Adhes + BNucl + Chrom + Mitos + NNucl + Thick + UShap
+##   Resid. Df Resid. Dev Df Deviance Pr(&gt;Chi)
+## 1       671     86.880                     
+## 2       673     87.093 -2 -0.21331   0.8988</code></pre>
+<p>O p-valor do teste foi relativamente alto, portanto pode-se concluir que o modelo restrito se ajusta aos dados amostrais tão bem quanto o modelo considerando todas as covariáveis. Assim, o modelo final fica expresso por:</p>
+<p><span class="math display">\[ \phi ^{-1} (\hat{\pi} _{i})
+ =  { -5.8024} + {0.1943}\, Adhes_{i} + {0.2145}\, BNucl_{i} + {0.3080}\, Chrom_{i} + \\ {0.2841}\, Mitos_{i} + {0.1527}\, NNucl_{i} + {0.3237}\, Thick_{i} + {0.1575}\, UShap_{i}\]</span></p>
+<hr />
+</div>
+<div id="analise-de-residuos" class="section level2">
+<h2><span class="header-section-number">5.3</span> Análise de Resíduos</h2>
+<p>Tal como nos modelos de regressão linear com erros Normais, a análise de resíduos é uma importante etapa do ajuste dos modelos para dados binários e dos Modelos Lineares Generalizados em geral.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">plot</span>(ajuste2<span class="fl">.1</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Os gráficos de diagnóstico padrão para a função glm são baseados nos resíduos componentes da deviance e, muitas vezes, complicados de avaliar na prática; contudo existem outras opções a serem exploradas.</p>
+<hr />
+</div>
+<div id="medidas-de-influencia" class="section level2">
+<h2><span class="header-section-number">5.4</span> Medidas de Influência</h2>
+<p>Uma alternativa para verificação de medidas influentes está implementada no pacote car:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="kw">library</span>(car)</a></code></pre></div>
+<pre><code>## Loading required package: carData</code></pre>
+<pre><code>## Registered S3 methods overwritten by &#39;car&#39;:
+##   method                          from
+##   influence.merMod                lme4
+##   cooks.distance.influence.merMod lme4
+##   dfbeta.influence.merMod         lme4
+##   dfbetas.influence.merMod        lme4</code></pre>
+<pre><code>## 
+## Attaching package: &#39;car&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:psych&#39;:
+## 
+##     logit</code></pre>
+<pre><code>## The following objects are masked from &#39;package:faraway&#39;:
+## 
+##     logit, vif</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     recode</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     some</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">infIndexPlot</span>(ajuste2<span class="fl">.1</span>, <span class="dt">vars=</span><span class="kw">c</span>(<span class="st">&quot;Cook&quot;</span>), <span class="dt">main=</span><span class="st">&quot;Distância de Cook&quot;</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw">infIndexPlot</span>(ajuste2<span class="fl">.1</span>, <span class="dt">vars=</span><span class="kw">c</span>(<span class="st">&quot;Studentized&quot;</span>), <span class="dt">main=</span><span class="st">&quot;Resíduos Padronizados&quot;</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<p>Não há indicativos fortes de outliers ou observações influentes.</p>
+<hr />
+</div>
+<div id="residuos-quantilicos-aleatorizados" class="section level2">
+<h2><span class="header-section-number">5.5</span> Resíduos Quantílicos Aleatorizados</h2>
+<p>Outra alternativa é avaliar a qualidade do ajuste com base nos resíduos quantílicos aleatorizados. A função <code>qresiduals</code> do pacote statmod extrai este tipo de resíduos do modelo</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">library</span>(statmod)</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb41-3" data-line-number="3">res &lt;-<span class="st"> </span><span class="kw">qresiduals</span>(ajuste2<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb41-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb41-5" data-line-number="5"><span class="kw">plot</span>(res)</a>
+<a class="sourceLine" id="cb41-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb41-7" data-line-number="7">residuos &lt;-<span class="st"> </span><span class="kw">qresiduals</span>(ajuste2<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb41-8" data-line-number="8"><span class="kw">qqnorm</span>(residuos)</a>
+<a class="sourceLine" id="cb41-9" data-line-number="9"><span class="kw">qqline</span>(residuos, <span class="dt">col =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>No gráfico da esquerda nota-se que os resíduos estão dispersos em torno de 0 entre -3 e 3. Além disso, no gráfico a direita verifica-se que os resíduos apresentam boa aderência à distribuição Normal, indicativo de bom ajuste.</p>
+<hr />
+</div>
+<div id="grafico-normal-de-probabilidades-com-envelope-simulado" class="section level2">
+<h2><span class="header-section-number">5.6</span> Gráfico Normal de Probabilidades com Envelope Simulado</h2>
+<p>O gráfico de resíduos simulados permite verificar a adequação do modelo ajustado mesmo que os resíduos não tenham uma aproximação adequada com a distribuição Normal. Neste tipo de gráfico espera-se, para um modelo bem ajustado, os pontos (resíduos) dispersos aleatoriamente entre os limites do envelope.</p>
+<p>Deve-se ficar atento à presença de pontos fora dos limites do envelope ou ainda a pontos dentro dos limites porém apresentando padrões sistemáticos.</p>
+<p>Vamos utilizar a função envelope implementada pelo professor <a href="https://docs.ufpr.br/~taconeli/">Cesar Augusto Taconeli</a> :</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">envelope=<span class="cf">function</span>(modelo){</a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">  dados=<span class="kw">na.omit</span>(modelo<span class="op">$</span>data)</a>
+<a class="sourceLine" id="cb42-3" data-line-number="3">  nsim=<span class="dv">100</span></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4">  n=modelo<span class="op">$</span>df.null<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">  r1=<span class="kw">sort</span>(<span class="kw">rstandard</span>(modelo,<span class="dt">type=</span><span class="st">&#39;deviance&#39;</span>))</a>
+<a class="sourceLine" id="cb42-6" data-line-number="6">  m1=<span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dt">nrow=</span>n,<span class="dt">ncol=</span>nsim)</a>
+<a class="sourceLine" id="cb42-7" data-line-number="7">  a2=<span class="kw">simulate</span>(modelo,<span class="dt">nsim=</span>nsim)</a>
+<a class="sourceLine" id="cb42-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb42-9" data-line-number="9">  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>nsim){</a>
+<a class="sourceLine" id="cb42-10" data-line-number="10">    dados<span class="op">$</span>y=a2[,i]</a>
+<a class="sourceLine" id="cb42-11" data-line-number="11">    aj=<span class="kw">update</span>(modelo,y<span class="op">~</span>.,<span class="dt">data=</span>dados)</a>
+<a class="sourceLine" id="cb42-12" data-line-number="12">    m1[,i]=<span class="kw">sort</span>(<span class="kw">rstandard</span>(aj,<span class="dt">type=</span><span class="st">&#39;deviance&#39;</span>))}</a>
+<a class="sourceLine" id="cb42-13" data-line-number="13">  </a>
+<a class="sourceLine" id="cb42-14" data-line-number="14">  li=<span class="kw">apply</span>(m1,<span class="dv">1</span>,quantile,<span class="fl">0.025</span>)</a>
+<a class="sourceLine" id="cb42-15" data-line-number="15">  m=<span class="kw">apply</span>(m1,<span class="dv">1</span>,quantile,<span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb42-16" data-line-number="16">  ls=<span class="kw">apply</span>(m1,<span class="dv">1</span>,quantile,<span class="fl">0.975</span>)</a>
+<a class="sourceLine" id="cb42-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb42-18" data-line-number="18">  quantis=<span class="kw">qnorm</span>((<span class="dv">1</span><span class="op">:</span>n<span class="fl">-0.5</span>)<span class="op">/</span>n)</a>
+<a class="sourceLine" id="cb42-19" data-line-number="19">  </a>
+<a class="sourceLine" id="cb42-20" data-line-number="20">  <span class="kw">plot</span>(<span class="kw">rep</span>(quantis,<span class="dv">2</span>),<span class="kw">c</span>(li,ls),<span class="dt">type=</span><span class="st">&#39;n&#39;</span>,<span class="dt">xlab=</span><span class="st">&#39;Percentil da N(0,1)&#39;</span>,<span class="dt">ylab=</span><span class="st">&#39;Resíduos&#39;</span>)</a>
+<a class="sourceLine" id="cb42-21" data-line-number="21">  <span class="kw">title</span>(<span class="st">&#39;Gráfico Normal de Probabilidades&#39;</span>)</a>
+<a class="sourceLine" id="cb42-22" data-line-number="22">  <span class="kw">lines</span>(quantis,li,<span class="dt">type=</span><span class="st">&#39;l&#39;</span>)</a>
+<a class="sourceLine" id="cb42-23" data-line-number="23">  <span class="kw">lines</span>(quantis,m,<span class="dt">type=</span><span class="st">&#39;l&#39;</span>,<span class="dt">lty=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb42-24" data-line-number="24">  <span class="kw">lines</span>(quantis,ls,<span class="dt">type=</span><span class="st">&#39;l&#39;</span>)</a>
+<a class="sourceLine" id="cb42-25" data-line-number="25">  <span class="kw">points</span>(quantis,r1,<span class="dt">pch=</span><span class="dv">16</span>,<span class="dt">cex=</span><span class="fl">0.75</span>)</a>
+<a class="sourceLine" id="cb42-26" data-line-number="26">}</a></code></pre></div>
+<p>E agora, utilizando a função:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">envelope</span>(ajuste2<span class="fl">.1</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>Os resíduos estão dispersos no interior dos envelopes simulados, sem aparente padrão sistemático dando indício de que o modelo está bem ajustado. Diversas outras opções de gráficos (meio) normais com envelopes simulados estão implementadas no pacote <code>hnp</code></p>
+<hr />
+</div>
+<div id="graficos-de-efeitos" class="section level2">
+<h2><span class="header-section-number">5.7</span> Gráficos de Efeitos</h2>
+<p>A função <code>effects</code>, do pacote de mesmo nome, devolve os efeitos marginais de cada variável de um modelo ajustado; os gráficos de efeitos nos fornecem uma forma visual de observar como cada variável explicativa afeta a resposta, com as demais variáveis fixadas na média.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">library</span>(effects)</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb44-3" data-line-number="3"><span class="kw">plot</span>(<span class="kw">allEffects</span>(ajuste2<span class="fl">.1</span>), <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>, <span class="dt">main =</span> <span class="st">&#39;&#39;</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<hr />
+</div>
+</div>
+<div id="predicao" class="section level1">
+<h1><span class="header-section-number">6</span> Predição</h1>
+<p>Para fins de predição, vamos considerar as seguintes características para duas observações distintas:</p>
+<p><strong>Tumor 1:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Adhes = 6<br />
+</li>
+<li>BNucl = 9</li>
+<li>Chrom = 3</li>
+<li>Mitos = 9</li>
+<li>NNucl = 8</li>
+<li>Thick = 2</li>
+<li>UShap = 6</li>
+</ol>
+<p><strong>Tumor 2</strong></p>
+<ol style="list-style-type: decimal">
+<li>Adhes = 3<br />
+</li>
+<li>BNucl = 1</li>
+<li>Chrom = 7</li>
+<li>Mitos = 1</li>
+<li>NNucl = 3</li>
+<li>Thick = 4</li>
+<li>UShap = 5</li>
+</ol>
+<p>E responder à seguinte pergunta: <em>Qual é a probabilidade do tumor ser maligno nos dois casos apresentados?</em></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">perfis &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Adhes =</span> <span class="kw">c</span>(<span class="dv">6</span>,  <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">                     <span class="dt">BNucl =</span> <span class="kw">c</span>(<span class="dv">9</span>,  <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">                     <span class="dt">Chrom =</span> <span class="kw">c</span>(<span class="dv">3</span>,  <span class="dv">7</span>),</a>
+<a class="sourceLine" id="cb45-4" data-line-number="4">                     <span class="dt">Mitos =</span> <span class="kw">c</span>(<span class="dv">9</span>,  <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb45-5" data-line-number="5">                     <span class="dt">NNucl =</span> <span class="kw">c</span>(<span class="dv">8</span>,  <span class="dv">3</span>),</a>
+<a class="sourceLine" id="cb45-6" data-line-number="6">                     <span class="dt">Thick =</span> <span class="kw">c</span>(<span class="dv">2</span>,  <span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb45-7" data-line-number="7">                     <span class="dt">UShap =</span> <span class="kw">c</span>(<span class="dv">6</span>,  <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb45-8" data-line-number="8">)</a></code></pre></div>
+<p>Utilizando a função predict para obter a probabilidade de tumor maligno nestes indivíduos:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">predict</span>(ajuste2<span class="fl">.1</span>, <span class="dt">interval =</span> <span class="st">&#39;prediction&#39;</span>, <span class="dt">newdata =</span> perfis, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</a></code></pre></div>
+<pre><code>##         1         2 
+## 0.9998338 0.4900842</code></pre>
+<p>Portanto, a probabilidade do tumor ser maligno, no primeiro caso, é 0,99; para o segundo caso, a probabilidade é de 0,49.</p>
+<hr />
+</div>
+<div id="avaliacao-do-poder-preditivo-do-modelo" class="section level1">
+<h1><span class="header-section-number">7</span> Avaliação do poder preditivo do modelo</h1>
+<p>Como temos uma base de tamanho razoável para fins preditivos, uma alternativa é separar a base em duas: uma para o ajuste do modelo, com 70% dos dados (com 477 observações) e outra para validação, com 30% (com 203 observações).</p>
+<hr />
+<div id="divisao-da-base-de-dados" class="section level2">
+<h2><span class="header-section-number">7.1</span> Divisão da Base de Dados</h2>
+<p>Primeiro vamos fixar uma semente, para que os resultados sejam reproduzíveis:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1909</span>)</a></code></pre></div>
+<p>E indexar as linhas da base para realizar a separação dos dados:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">indices &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">680</span>, <span class="dt">size =</span> <span class="dv">477</span>) </a></code></pre></div>
+<p>Agora, da base total, vamos pegar 70% dos dados (477 linhas da base) para ajuste do modelo:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">dadosajuste &lt;-<span class="st"> </span>dados[indices,]</a></code></pre></div>
+<p>E 30% (203 linhas) para validação</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">dadosvalid &lt;-<span class="st"> </span>dados[<span class="op">-</span>indices,]</a></code></pre></div>
+<hr />
+</div>
+<div id="ponto-de-corte" class="section level2">
+<h2><span class="header-section-number">7.2</span> Ponto de Corte</h2>
+<p>Como estamos modelando a probabilidade de tumor maligno, vamos estabelecer o ponto de corte 0.5, isso é, se a probabilidade estimada for maior que este valor o tumor será classificado como maligno.</p>
+<p>Vamos armazenar os valores preditos do modelo para os dados de validação:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">pred &lt;-<span class="st"> </span><span class="kw">predict</span>(ajuste2<span class="fl">.1</span>, <span class="dt">newdata =</span> dadosvalid, <span class="dt">type =</span> <span class="st">&#39;response&#39;</span>)</a></code></pre></div>
+<p>Estabelecer o ponto de corte como 0.5:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">corte &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pred <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>, <span class="st">&#39;maligno&#39;</span>, <span class="st">&#39;benigno&#39;</span>)</a></code></pre></div>
+<p>E verificar o número de classificações corretas e incorretas</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">tabela &lt;-<span class="st"> </span><span class="kw">table</span>(corte, dadosvalid<span class="op">$</span>Class)</a>
+<a class="sourceLine" id="cb54-2" data-line-number="2"><span class="kw">colnames</span>(tabela)&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;benigno&#39;</span>, <span class="st">&#39;maligno&#39;</span>)</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">tabela</a></code></pre></div>
+<pre><code>##          
+## corte     benigno maligno
+##   benigno     135       4
+##   maligno       4      61</code></pre>
+<p>Ao todo, o modelo aplicado aos dados de validação, cometeu apenas 4 erros, indicando bom poder preditivo do modelo.</p>
+<hr />
+</div>
+<div id="sensibilidade-e-especificidade" class="section level2">
+<h2><span class="header-section-number">7.3</span> Sensibilidade e Especificidade</h2>
+<p>Para fazer uso dos dados de validação, dois conceitos são necessários: sensibilidade e especificidade.</p>
+<p>Define-se por <strong>sensibilidade</strong> a capacidade do modelo de detectar tumores malignos, ou seja, de classificar como malignos os tumores que de fato o são .</p>
+<p>Já a <strong>especificidade</strong> é a capacidade do modelo de detectar classificar como benignos tumores verdadeiramente benignos.</p>
+<p>A sensibilidade é dada por:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">sens &lt;-<span class="st"> </span>tabela[<span class="dv">2</span>,<span class="dv">2</span>]<span class="op">/</span><span class="kw">sum</span>(tabela[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">sens </a></code></pre></div>
+<pre><code>## [1] 0.9384615</code></pre>
+<p>Temos então que a probabilidade de o modelo classificar o tumor como maligno, dado que o tumor é realmente maligno é de aproximadamente 0,97.</p>
+<p>Para a especificidade temos:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">espec &lt;-<span class="st"> </span>tabela[<span class="dv">1</span>,<span class="dv">1</span>]<span class="op">/</span><span class="kw">sum</span>(tabela[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">espec</a></code></pre></div>
+<pre><code>## [1] 0.971223</code></pre>
+<p>A probabilidade de o modelo classificar o tumor como benigno, dado que o tumor é realmente benigno é de aproximadamente 0,98.</p>
+<p>Sendo assim, ao que tudo indica, o modelo está bem ajustado e com bom poder de predição.</p>
+<hr />
+</div>
+<div id="curva-roc" class="section level2">
+<h2><span class="header-section-number">7.4</span> Curva ROC</h2>
+<p>A curva ROC (Receiver operating characteristic) é um gráfico que descreve a qualidade preditiva do modelo. É uma representação gráfica da sensibilidade e 1-especificidade. O método consiste no gráfico das probabilidades de verdadeiros positivos vs falsos positivos.</p>
+<p>A curva ROC pode ser obtida com os seguintes códigos:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">library</span>(ROCR)</a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">pred &lt;-<span class="st"> </span><span class="kw">prediction</span>(ajuste2<span class="fl">.1</span><span class="op">$</span>fitted.values, dados<span class="op">$</span>Class)</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">perf &lt;-<span class="st"> </span><span class="kw">performance</span>(pred,<span class="st">&quot;tpr&quot;</span>,<span class="st">&quot;fpr&quot;</span>)</a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="kw">plot</span>(perf, <span class="dt">xlab =</span> <span class="st">&#39;1 - Especificidade&#39;</span>, <span class="dt">ylab =</span> <span class="st">&#39;Sensibilidade&#39;</span>, </a>
+<a class="sourceLine" id="cb60-5" data-line-number="5">     <span class="dt">main =</span> <span class="st">&quot;Curva ROC&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="vinheta2_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<p>Quanto maior a área sob a curva, maior a qualidade do modelo; podemos obter a área sob a curva da seguinte forma:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1">area &lt;-<span class="st"> </span><span class="kw">performance</span>(pred,<span class="st">&quot;auc&quot;</span>)</a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">area<span class="op">@</span>y.values</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] 0.9975055</code></pre>
+<p>Como boa parte da área total está sob a curva ROC, verifica-se o bom poder preditivo do modelo.</p>
+<hr />
+</div>
+<div id="outra-alternativa-de-validacao" class="section level2">
+<h2><span class="header-section-number">7.5</span> Outra Alternativa de validação</h2>
+<p>Outra alternativa para avaliar a qualidade preditiva do modelo seria utilizando validação cruzada. A função cv.glm do pacote boot realiza este procedimento.</p>
+<hr />
+</div>
+</div>
+<div id="referencias" class="section level1">
+<h1><span class="header-section-number">8</span> Referências</h1>
+<p>Bennett, K.,P., and Mangasarian, O.L., Neural network training via linear programming. In P. M. Pardalos, editor, Advances in Optimization and Parallel Computing, pages 56-57. Elsevier Science, 1992</p>
+<p>Julian Faraway (2016). faraway: Functions and Datasets for Books by Julian Faraway. R package version 1.0.7. <a href="https://CRAN.R-project.org/package=faraway" class="uri">https://CRAN.R-project.org/package=faraway</a></p>
+<hr />
+<center>
+<table>
+<tr>
+<td>
+<img src="img/logo.png" alt="Drawing" style="width: 200px;"/>
+</td>
+<td>
+<img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/>
+</td>
+<td>
+<img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/>
+</td>
+<td>
+<img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/>
+</td>
+<td>
+<img src="img/leg.png" alt="Drawing" style="width: 150px;"/>
+</td>
+</tr>
+</table>
+</center>
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
+
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

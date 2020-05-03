@@ -1,0 +1,65 @@
+---
+title: " "
+---
+
+<center>
+<img src="img/logo6.png" width=200 height=200>
+</center>
+
+
+---
+
+<font size="8"> 
+<p align=”center”> <b> Modelos Lineares Generalizados </b> </center>
+</font>
+
+<font size="4"> 
+<p align=”center”> [Lineu Alberto Cavazani de Freitas](https://lineu96.github.io/st/) </center>
+</font> 
+
+
+---
+
+Os Modelos Lineares Generalizados, propostos por [Nelder e Wedderburn em 1972][artigo], são aplicáveis em casos nos quais a variável resposta pode ser representada por alguma distribuição pertencente à família exponencial. Exemplos de distribuições pertencentes a esta família são:
+
+ - Bernoulli; 
+ - Binomial; 
+ - Poisson; 
+ - Binomial Negativa; 
+ - Normal; 
+ - Gama;
+ - Normal inversa.
+ 
+Sendo assim, trata-se de uma classe de modelos de regressão para dados contínuos simétricos e assimétricos, contagens e ainda casos em que a variável resposta tenha apenas dois desfechos possíveis. Constitui portanto um framework para modelagem bem mais flexível do que o clássico modelo linear com erros normais.
+
+---
+
+Como aluno de graduação, fui monitor da disciplina de Modelos Lineares Generalizados ([CE225][glm]) sob a orientação do professor [Cesar Augusto Taconeli][cesar]. Esta disciplina foi, sem dúvidas, a que mais gostei do curso, e a monitoria foi uma das atividades mais interessantes e enriquecedoras que tive a oportunidade de participar.
+
+Na época produzimos materiais com o intuito de auxiliar os alunos em como proceder a análise em R de um conjunto de dados utilizando o framework dos Modelos Lineares Generalizados. Ao todo, foram geradas 3 páginas no formato html cada um com uma análise de um dataset. São elas:
+
+ - **Regressão Linear com Erros Normais.**
+ 
+ - **Regressão para Dados Binários.**
+ 
+ - **Regressão para Dados de Contagem.**
+
+---
+
+[glm]: https://docs.ufpr.br/~taconeli/CE22517/CE22517.html
+[cesar]: https://docs.ufpr.br/~taconeli/
+[artigo]: https://docs.ufpr.br/~taconeli/CE22517/artigo.pdf
+
+
+<center>
+<table><tr>
+<td> <img src="img/logo.png" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/ufpr.jpg" alt="Drawing" style="width: 200px;"/> </td>
+<td> <img src="img/LogoB.png" alt="Drawing" style="width: 50px;"/> </td>
+<td> <img src="img/leg.png" alt="Drawing" style="width: 150px;"/> </td>
+</tr></table>
+</center>
+
+
+<div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;"></div>
